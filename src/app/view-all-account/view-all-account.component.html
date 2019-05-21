@@ -1,0 +1,37 @@
+<span *ngIf="errormessage"><h1>Error..</h1></span>
+
+<span *ngIf="accounts">
+
+	<div class="row justify-content-center m-2">
+		<h2>All Accounts</h2>
+
+	</div>
+	<div class="row">
+		<div class="offset-md-2 col-md-8">
+			<table class="table table-striped">
+				<tr>
+					<th>Account Id</th>
+					<th>Customer Id</th>
+					<th>Account Type</th>
+					<th>Balance</th>
+					<th>Cr. Date</th>
+					<th>Cr. Last Date</th>
+					<th>Duaration</th>
+					<th>status</th>
+
+				</tr>
+				<tr *ngFor="let a of accounts">
+					<td>{{a.accountId}}</td>
+					<td>{{a.customerId}}</td>
+					<td>{{a.accountType}}</td>
+					<td>{{a.balance}}</td>
+					<td>{{a.address}}</td>
+					<td>{{a.crDate}}</td>
+					<td>{{a.crLastDate}}</td>
+					<td>{{a.duration}}</td>
+					<td>{{a.status}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	</span>

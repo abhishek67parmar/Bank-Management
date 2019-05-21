@@ -1,0 +1,61 @@
+<div class="container">
+	<div class="row justify-content-center m-2">
+		<h2>Account Registration</h2>
+
+	</div>
+	<div class="row justify-content-center m-2" *ngIf="message>0">
+		<div class="alert alert-success" role="alert">Account added with AccId: {{message}}</div>
+	</div>
+	<div class="row justify-content-center m-2" *ngIf="message==-1" >
+		<div class="alert alert-danger" role="alert">
+		Maximum limit exceeded...
+		</div>
+	</div>
+	<div class="row justify-content-center m-2" *ngIf="message==-2" >
+		<div class="alert alert-danger" role="alert">
+		Can't add same account
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-6">
+
+			<form [formGroup]="register" (ngSubmit)="onAcSubmit()">
+				<div class="form-group">
+					<label for="customerId">customer Id</label> <input type="text"
+						class="form-control" id="customerId" placeholder="customer Id" required
+						formControlName="customerId">
+					<div
+						*ngIf="register.get('customerId').hasError('required') && register.get('customerId').touched"
+						class="alert alert-danger">please enter Customer Id</div>
+				</div>
+
+				<div class="form-group">
+					<label for="amount">amount</label> <input type="text"
+						class="form-control" id="balance" placeholder="balance" required
+						formControlName="balance">
+					<div
+						*ngIf="register.get('balance').hasError('required') && register.get('balance').touched"
+						class="alert alert-danger">please enter amount</div>
+				</div>
+				
+				<div class="form-group">
+					<label for="customerName">Account Type</label><br>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio"
+							name="accountType" id="accountType" value="saving" formControlName="accountType">
+						<label class="form-check-label" for="Saving">saving</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio"
+							name="accountType" id="accountType" value="current" formControlName="accountType">
+						<label class="form-check-label" for="current">current</label>
+					</div>
+
+				</div>
+				
+				<button type="submit" [disabled]="register.invalid"
+					class="btn btn-info">Submit</button>
+			</form>
+		</div>
+	</div>
+</div>

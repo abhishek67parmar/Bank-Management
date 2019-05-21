@@ -1,0 +1,108 @@
+<span *ngIf="!customerlist">
+	<div class="container">
+		<div class="row justify-content-center m-2">
+			<h2>View Customer By ContactNo.</h2>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-6">
+
+				<form [formGroup]="view" (ngSubmit)="onSubmit()">
+
+					<div class="form-group">
+						<label for="contactNo"> Contact No.</label><input type="text"
+							class="form-control" id="contactNo" placeholder="Enter contact no" required
+							formControlName="contactNo">
+						<div
+							*ngIf="view.get('contactNo').hasError('required') && view.get('contactNo').touched"
+							class="alert alert-danger">please enter Contact No.</div>
+						<div
+							*ngIf="view.get('contactNo').hasError('pattern') && view.get('contactNo').touched"
+							class="alert alert-danger">Contact must be 10 digit number</div>
+					</div>
+
+					<button type="submit" class="btn btn-info" data-toggle="modal" data-target="#exampleModall">View</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</span>
+<span *ngIf="customerlist" >
+<div class="row">
+		<div class="offset-md-3 col-md-6">
+			<div class="row justify-content-center m-2">
+				<h2>Customer Details</h2>
+			</div>
+			<table class="table table-striped">
+		<tr>
+			<td>ssnId</td>
+			<td>{{customerlist.ssnId}}</td>
+		</tr>
+		<tr>
+			<td>customer Id</td>
+			<td>{{customerlist.customerId}}</td>
+		</tr>
+		<tr>
+			<td>customerName</td>
+			<td>{{customerlist.customerName}}</td>
+		</tr>
+		<tr>
+			<td>age</td>
+			<td>{{customerlist.age}}</td>
+		</tr>
+		<tr>
+			<td>address</td>
+			<td>{{customerlist.address}}</td>
+		</tr>
+		<tr>
+			<td>city</td>
+			<td>{{customerlist.city}}</td>
+		</tr>
+		<tr>
+			<td>state</td>
+			<td>{{customerlist.state}}</td>
+		</tr>
+		<tr>
+			<td>email</td>
+			<td>{{customerlist.email}}</td>
+		</tr>
+		<tr>
+			<td>contactNo</td>
+			<td>{{customerlist.contactNo}}</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>{{customerlist.status}}</td>
+		</tr>
+
+	</table>
+		</div>
+	</div>
+</span>
+
+
+
+
+<span *ngIf="errormessage">
+<div class="modal fade" id="exampleModall" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Status</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<h5>Customer Not exist...</h5> 
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+</span>

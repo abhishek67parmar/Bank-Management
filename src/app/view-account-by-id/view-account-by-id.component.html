@@ -1,0 +1,78 @@
+<span *ngIf="!account">
+	<div class="container">
+		<div class="row justify-content-center m-2">
+			<h2>View Account By accountId</h2>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-6">
+
+				<form [formGroup]="view" (ngSubmit)="onviewaccId()">
+
+					<div class="form-group">
+						<label for="accountId">Account Id</label><input type="text"
+							class="form-control" id="accountId" placeholder="account Id" required
+							formControlName="accountId">
+						<div
+							*ngIf="view.get('accountId').hasError('required') && view.get('accountId').touched"
+							class="alert alert-danger">please enter SSN Id</div>
+						
+					</div>
+
+					<button type="submit" class="btn btn-info">View</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</span>
+<span *ngIf="errormessage">
+<h5>not fount....</h5>
+</span>
+<span *ngIf="account">
+<h1>View...........</h1>
+
+<div class="row">
+	<div class="offset-md-3 col-md-6">
+		<div class="row justify-content-center m-2">
+			<h2>Account Details</h2>
+		</div>
+		<table class="table table-striped">
+
+			<tr>
+				<td>accountId</td>
+				<td>{{account.accountId}}</td>
+			</tr>
+			<tr>
+				<td>customer Id</td>
+				<td>{{account.customerId}}</td>
+			</tr>
+			<tr>
+				<td>accountType</td>
+				<td>{{account.accountType}}</td>
+			</tr>
+			<tr>
+				<td>balance</td>
+				<td>{{account.balance}}</td>
+			</tr>
+			<tr>
+				<td>address</td>
+				<td>{{account.crDate}}</td>
+			</tr>
+			<tr>
+				<td>crLastDate</td>
+				<td>{{account.crLastDate}}</td>
+			</tr>
+			<tr>
+				<td>duration</td>
+				<td>{{account.duration}}</td>
+			</tr>
+			<tr>
+				<td>status</td>
+				<td>{{account.status}}</td>
+			</tr>
+		</table>
+
+		
+		<a [routerLink]="['/deleteaccount',account.accountId]"><button type="button" class="btn btn-danger" [disabled]="account.status=='inactive'">Delete</button></a>
+	</div>
+</div>
+</span>

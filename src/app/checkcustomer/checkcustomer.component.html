@@ -1,0 +1,57 @@
+
+	<div class="container">
+		<div class="row justify-content-center m-2">
+			<h2>Check Customer</h2>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-6">
+
+				<form [formGroup]="view" (ngSubmit)="onSubmit()">
+
+					<div class="form-group">
+						<label for="ssnId">SSN Id</label><input type="text"
+							class="form-control" id="ssnId" placeholder="SSN Id" required
+							formControlName="ssnId">
+						<div
+							*ngIf="view.get('ssnId').hasError('required') && view.get('ssnId').touched"
+							class="alert alert-danger">please enter SSN Id</div>
+						<div
+							*ngIf="view.get('ssnId').hasError('pattern') && view.get('ssnId').touched"
+							class="alert alert-danger">SSN Id must be 9 digit number</div>
+					</div>
+
+					<button type="submit" class="btn btn-info" data-toggle="modal" data-target="#exampleModall">View</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+<div class="modal fade" id="exampleModall" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Status</h5>
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				
+				<span *ngIf="customerlist" ><h3>Customer Exist</h3></span>
+				<span *ngIf="errormessage"><h5>Customer Not exist...</h5> </span>
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				
+			</div>
+		</div>
+	</div>
+</div>

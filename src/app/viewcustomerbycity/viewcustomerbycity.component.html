@@ -1,0 +1,68 @@
+<span *ngIf="!customerlist">
+<div class="container">
+	<div class="row justify-content-center m-2">
+		<h2>View Customer By City</h2>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-6">
+
+			<form [formGroup]="view" (ngSubmit)="onSubmit()">
+		
+				<div class="form-group">
+					<label for="city">Enter City</label><input type="text"
+						class="form-control" id="city" placeholder="Enter City" required
+						formControlName="city">
+					<div
+						*ngIf="view.get('city').hasError('required') && view.get('city').touched"
+						class="alert alert-danger">please enter city</div>
+					<div
+						*ngIf="view.get('city').hasError('pattern') && view.get('city').touched"
+						class="alert alert-danger">Invalid city </div>
+						</div>
+						
+						<button type="submit" class="btn btn-info">View</button>
+						</form>
+						</div>
+						</div>
+						</div>
+						</span>
+<span *ngIf="customerlist">
+<div class="row justify-content-center m-2">
+		<h2>All Accounts</h2>
+
+	</div>
+	<div class="row">
+		<div class="offset-md-2 col-md-8">
+			<table class="table table-striped">
+	<tr>
+	<th>ssnId</th>
+	<th>CustId</th>
+	<th>Name</th>
+	<th>age</th>
+	<th>add</th>
+	<th>city</th>
+	<th>state</th>
+	<th>email</th>
+	<th>cont. No.</th>
+	<th>Status</th>
+	
+	
+	</tr>
+	<tr *ngFor="let c of customerlist">
+		<td>{{c.ssnId}}</td>
+		<td>{{c.customerId}}</td>
+		<td>{{c.customerName}}</td>
+		<td>{{c.age}}</td>
+		<td>{{c.address}}</td>
+		<td>{{c.city}}</td>
+		<td>{{c.state}}</td>
+		<td>{{c.email}}</td>
+		<td>{{c.contactNo}}</td>
+		<td>{{c.status}}</td>
+	</tr>
+</table>
+	</div>
+	</div>
+</span>
+<span *ngIf="errormessage"><h5>Customer Not exist...</h5> </span>		
+						

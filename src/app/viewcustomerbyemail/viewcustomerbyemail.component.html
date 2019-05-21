@@ -1,0 +1,83 @@
+<span *ngIf="!customerlist">
+<div class="container">
+	<div class="row justify-content-center m-2">
+		<h2>View Customer By E-mail</h2>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-6">
+
+			<form [formGroup]="view" (ngSubmit)="onSubmit()">
+		
+				<div class="form-group">
+					<label for="email">E-mail</label><input type="text"
+						class="form-control" id="email" placeholder="E-mail" required
+						formControlName="email">
+					<div
+						*ngIf="view.get('email').hasError('required') && view.get('email').touched"
+						class="alert alert-danger">please enter E-mail Id</div>
+					<div
+						*ngIf="view.get('email').hasError('pattern') && view.get('email').touched"
+						class="alert alert-danger">Invalid E-mail</div>
+						</div>
+						
+						<button type="submit" class="btn btn-info">View</button>
+						</form>
+						</div>
+						</div>
+						</div>
+						</span>
+<span *ngIf="customerlist" >
+	<div class="row">
+		<div class="offset-md-3 col-md-6">
+			<div class="row justify-content-center m-2">
+				<h2>Customer Details</h2>
+			</div>
+			<table class="table table-striped">
+		<tr>
+			<td>ssnId</td>
+			<td>{{customerlist.ssnId}}</td>
+		</tr>
+		<tr>
+			<td>customer Id</td>
+			<td>{{customerlist.customerId}}</td>
+		</tr>
+		<tr>
+			<td>customerName</td>
+			<td>{{customerlist.customerName}}</td>
+		</tr>
+		<tr>
+			<td>age</td>
+			<td>{{customerlist.age}}</td>
+		</tr>
+		<tr>
+			<td>address</td>
+			<td>{{customerlist.address}}</td>
+		</tr>
+		<tr>
+			<td>city</td>
+			<td>{{customerlist.city}}</td>
+		</tr>
+		<tr>
+			<td>state</td>
+			<td>{{customerlist.state}}</td>
+		</tr>
+		<tr>
+			<td>email</td>
+			<td>{{customerlist.email}}</td>
+		</tr>
+		<tr>
+			<td>contactNo</td>
+			<td>{{customerlist.contactNo}}</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>{{customerlist.status}}</td>
+		</tr>
+
+	</table>
+	</div>
+	</div>
+</span>	
+<span *ngIf="errormessage"><h5>Customer Not exist...</h5> </span>
+
+		

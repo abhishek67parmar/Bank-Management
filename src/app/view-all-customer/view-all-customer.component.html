@@ -1,0 +1,32 @@
+<span *ngIf="errormessage"><h1>Error..</h1></span>
+
+<span *ngIf="customers">
+<table class="table table-striped">
+	<tr>
+	<th>ssnId</th>
+	<th>CustId</th>
+	<th>Name</th>
+	<th>age</th>
+	<th>add</th>
+	<th>city</th>
+	<th>state</th>
+	<th>email</th>
+	<th>cont. No.</th>
+	<th>status</th>
+	
+	
+	</tr>
+	<tr *ngFor="let c of customers">
+		<td>{{c.ssnId}}</td>
+		<td>{{c.customerId}}</td>
+		<td>{{c.customerName}}</td>
+		<td>{{c.age}}</td>
+		<td>{{c.address}}</td>
+		<td>{{c.city}}</td>
+		<td>{{c.state}}</td>
+		<td>{{c.email}}</td>
+		<td>{{c.contactNo}}</td>
+		<td>{{c.status}}</td>
+	</tr>
+</table>
+</span>

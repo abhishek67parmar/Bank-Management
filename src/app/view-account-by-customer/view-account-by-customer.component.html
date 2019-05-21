@@ -1,0 +1,35 @@
+<span *ngIf="!account">
+	<div class="container">
+		<div class="row justify-content-center m-2">
+			<h2>View Account By customer Id</h2>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-6">
+
+				<form [formGroup]="view" (ngSubmit)="onviewId()">
+
+					<div class="form-group">
+						<label for="customerId">Customer Id</label><input type="text"
+							class="form-control" id="customerId" placeholder="Customer Id" required
+							formControlName="customerId">
+						<div
+							*ngIf="view.get('customerId').hasError('required') && view.get('customerId').touched"
+							class="alert alert-danger">please enter Customer Id</div>
+						<div
+							*ngIf="view.get('customerId').hasError('pattern') && view.get('customerId').touched"
+							class="alert alert-danger">Customer id must be number</div>
+					</div>
+
+					<button type="submit" class="btn btn-info">View</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</span>
+<span *ngIf="errormessage">
+<h5>not found....</h5>
+</span>
+<span *ngIf="account">
+<h1>View...........</h1>
+
+</span>
